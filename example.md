@@ -122,8 +122,6 @@ layout: s-sub-cover
 添加说明吧
 
 ---
-background:
-  name: SGradient
 layout: s–vertical
 hidden: hidden
 ---
