@@ -16,8 +16,8 @@ export type SType = typeof sType[number]
 
 export const defaultCquptConfig: CquptConfig = {
     school: {
-        badge: "/school_badge.svg",
-        logo: "/school_logo.svg",
+        badge: "school_badge.svg",
+        logo: "school_logo.svg",
     },
 
     date: "",
@@ -53,7 +53,7 @@ export const defaultCquptConfig: CquptConfig = {
     toc: { r: 10 },
     cols: { overflow: "hidden" }, // align function realized by a comp
     vertical: {
-        view: "/test/view.jpg",
+        view: "test/view.jpg",
         fromTo: "ltr",
         overflow: "auto",
         direction: "horizontal",
