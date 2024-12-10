@@ -224,18 +224,6 @@ layout: s-cols
 layout: s-cols
 ---
 
-::col_1::
-
-  > 这是原论文决策树参考的峰值分布直方图：
-  >
-  > ![](./pic/week_12_thesis_sample.png)
-  >
-  > 这是我代码中的对应年限的直方图：
-  >
-  > ![](./pic/week_12_hist_1.png)
-
-::col_2::
-
 <s-image src='tmp/img-9.png' intro='实现结果' align='center' />
 
 ---
