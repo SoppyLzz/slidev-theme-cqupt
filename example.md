@@ -123,6 +123,8 @@ background:
     name: SGradient
 layout: s-vertical
 hidden: hidden
+vertical:
+    view: /test/view.jpg
 ---
 
 ::side::

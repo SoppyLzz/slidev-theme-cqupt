@@ -1,6 +1,7 @@
 {
   "npm": {
-    "publish": false
+    "publish": true,
+    "ignoreVersion": true
   },
   "github": {
     "release": true,
