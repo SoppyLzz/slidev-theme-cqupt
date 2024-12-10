@@ -14,8 +14,7 @@
   },
   "hooks": {
     "after:bump": "echo Release success",
-    "after:git:release": "if [ \"${isPreRelease}\" != \"true\" ]; then git tag -f latest && git push -f origin latest; fi",
-
+    "after:git:release": "if [ \"${isPreRelease}\" != \"true\" ]; then git tag -f latest && git push -f origin latest; fi"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
