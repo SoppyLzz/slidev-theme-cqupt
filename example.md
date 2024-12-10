@@ -126,7 +126,7 @@ background:
   name: SGradient
 vertical:
   view: test/view.jpg
-layout:s–vertical
+layout: s–vertical
 hidden: hidden
 ---
 
