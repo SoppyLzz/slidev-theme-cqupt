@@ -9,6 +9,9 @@ defaults:
     name: SNav
   background:
     name: SDefault
+  school:
+    badge: school_badge.svg
+    logo: school_logo.svg
 ---
 
 # slidev theme cqupt主题展示
@@ -120,9 +123,9 @@ layout: s-sub-cover
 
 ---
 background:
-    name: SGradient
+  name: SGradient
 vertical:
-    view: 'test/view.jpg'
+  view: test/view.jpg
 layout:ertical
 hidden: hidden
 ---
