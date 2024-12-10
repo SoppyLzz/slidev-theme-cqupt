@@ -39,6 +39,7 @@ jobs:
         run: |
           npm install
           npm add -g @slidev/cli
+          npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
       - name: release
         run: npm run release
         env:
