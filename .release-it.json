@@ -1,9 +1,9 @@
 {
   "npm": {
-    "publish": true,
+    "publish": false,
+    "skipChecks": true,
     "ignoreVersion": true,
-    "publishArgs": ["--provenance"],
-    "skipChecks": true
+    "publishArgs": ["--provenance"]
   },
   "github": {
     "release": true,
