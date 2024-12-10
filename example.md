@@ -121,7 +121,14 @@ layout: s-sub-cover
 添加说明吧
 
 ---
+<<<<<<< HEAD
 layout: s–vertical
+=======
+background:
+    name: SGradient
+layout: s-vertical
+hidden: hidden
+>>>>>>> 504be91 (chore(23): 234)
 ---
 ::side::
 
