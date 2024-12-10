@@ -124,8 +124,6 @@ layout: s-sub-cover
 ---
 background:
   name: SGradient
-vertical:
-  view: test/view.jpg
 layout: s–vertical
 hidden: hidden
 ---
