@@ -123,7 +123,6 @@ layout: s-sub-cover
 
 ---
 layout: s–vertical
-hidden: hidden
 ---
 
 ::side::
@@ -134,6 +133,7 @@ hidden: hidden
 这里也可以写 `markdown`
 
 ::col_1::
+
 ## 列数控制
 你可以写两列或者三列
 
