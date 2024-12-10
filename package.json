@@ -1,6 +1,6 @@
 {
   "name": "slidev-theme-cqupt",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "keywords": [
     "slidev-theme",
@@ -15,7 +15,6 @@
     "dev": "slidev example.md --open",
     "export": "slidev export example.md",
     "screenshot": "slidev export example.md --format png",
-
     "prepare": "husky",
     "commit": "git-cz",
     "release": "release-it",
