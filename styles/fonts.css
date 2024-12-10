@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Song Ti';
+    font-style: normal;
+    font-display: swap;
+    src:
+            local('Song Ti'),
+            url('/fonts/AaGuDianKeBenSong-2.ttf') format('truetype');
+}

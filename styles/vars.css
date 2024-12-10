@@ -1,0 +1,62 @@
+:root {
+    --s-theme: #00923f;
+    --s-primary: #118ab2;
+    --s-success: #67C23A;
+    --s-info: #909399;
+    --s-warning: #E6A23C;
+    --s-danger: #ef476f;
+
+    --s-light-1: #f3f4f6;
+    --s-light-2: #f5f6f7;
+    --s-light-3: #f6f7f9;
+    --s-light-4: #f8f9fa;
+    --s-light-5: #fafafb;
+    --s-light-6: #fcfcfc;
+    --s-light-7: #fdfdfe;
+    --s-light-8: #ffffff;
+
+    --s-dark-1: #3d4149;
+    --s-dark-2: #363a41;
+    --s-dark-3: #2f3339;
+    --s-dark-4: #292b31;
+    --s-dark-5: #222429;
+    --s-dark-6: #1b1d20;
+    --s-dark-7: #141618;
+    --s-dark-8: #0e0e10;
+}
+
+:root {
+    --s-bg-dim: var(--s-light-1);
+    --s-bg-fade: var(--s-light-3);
+    --s-bg-base: var(--s-light-6);
+    --s-bg-deep: var(--s-light-8);
+
+    --s-line-fade: var(--s-dark-1);
+    --s-line-base: var(--s-dark-6);
+    --s-line-deep: var(--s-dark-8);
+}
+
+html.dark {
+    --s-bg-dim: var(--s-dark-1);
+    --s-bg-fade: var(--s-dark-3);
+    --s-bg-base: var(--s-dark-6);
+    --s-bg-deep: var(--s-dark-8);
+
+    --s-line-fade: var(--s-light-1);
+    --s-line-base: var(--s-light-6);
+    --s-line-deep: var(--s-light-8);
+}
+
+:root {
+    --slidev-theme-primary: var(--s-theme);
+    --slidev-code-background: var(--s-bg-base);
+    --slidev-slide-container-background: var(--s-dark-8);
+
+    /*blockquote font color*/
+    --slidev-code-foreground: var(--s-line-base);
+
+    --slidev-code-padding: 0.75rem;
+    --slidev-code-font-size: 1rem;
+    --slidev-code-line-height: 1.5rem;
+    --slidev-code-radius: 0;
+}

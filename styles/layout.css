@@ -1,0 +1,85 @@
+/*for layouts*/
+.slidev-layout.cover {
+  @apply m-8 mb-32 h-[calc(100%-10rem)];
+  h1 { @apply text-6xl uppercase break-all font-500 }
+}
+.slidev-layout.toc,
+.slidev-layout.vertical{
+  @apply p-0 m-0 mx-8 h-full;
+}
+.slidev-layout.sub-cover,
+.slidev-layout.end {
+  @apply m-0 h-full text-center;
+}
+
+/*for element*/
+.slidev-layout {
+  /*border for test */
+  @apply m-8 mt-32  p-0 h-[calc(100%-10rem)] text-xl overflow-hidden s-color-base;
+
+  /*normal part*/
+  h1 { @apply text-4xl m-0 mb-3 s-color-deep; }
+  h2 { @apply text-3xl m-0 mb-2 s-color-deep; }
+  h3 { @apply text-2xl m-0 mb-2 s-color-deep; }
+  h4,h5,h6,p { @apply text-xl m-0 mb-2; }
+  kbd { @apply s-bg-dim shadow-md border-b-3 s-border-fade text-nowrap text-base s-color-fade; }
+
+  /*katex part*/
+  .katex { @apply text-xl text-nowrap; }
+
+  /*list part*/
+  ol { @apply ml-4; }
+  li { @apply leading-7; }
+  li>p { @apply mb-0; }
+
+  /*list individual preference*/
+  ul+:not(ul, ol), ol+:not(ul, ol) { @apply mt-2 !important; }  /*no margin between ul and ol*/
+
+  /*code part*/
+  blockquote { @apply border-l-4 rounded-none text-lg; }
+  *:not(pre)>code { @apply s-bg-dim border border-1 s-border-fade rounded text-base text-nowrap; }
+
+  /*table part*/
+  table { @apply s-bg-dim text-base; }
+  tr { @apply border border-y-[var(--s-line-base)] }
+  tr:nth-child(odd) { @apply s-bg-base; }
+  th { @apply s-bg-dim; }
+
+  /*special part*/
+  pre,blockquote,table { @apply mx-4 my-2 w-[calc(100%-2rem)] shadow-md; }
+
+  div.slidev-code-wrapper+:is(blockquote, table, div.slidev-code-wrapper),  /*div.slidev-code-wrapper for pre container*/
+  blockquote+:is(blockquote, table, div.slidev-code-wrapper),
+  pre+:is(blockquote, table, div.slidev-code-wrapper) { @apply mt-4 !important; }
+
+  /*adjust code_div button position*/
+  div.slidev-code-wrapper>button { @apply top-0 right-4; }
+}
+
+/*special css for vertical layout*/
+.slidev-layout .s-text-vertical {
+  writing-mode: vertical-lr;
+  h1 { @apply m-0 mr-3; }
+  h2 { @apply m-0 mr-2; }
+  h3 { @apply m-0 mr-2; }
+  h4,h5,h6,p { @apply m-0 mr-2; }
+}
+
+/*background*/
+.s-bg-fade-to-transparent {
+  background: linear-gradient(180deg, var(--s-bg-fade) 35%, transparent 120%)
+}
+
+/*scrollbar*/
+.s-scrollbar::-webkit-scrollbar
+, pre::-webkit-scrollbar {
+  @apply w-1.2 h-2;
+}
+.s-scrollbar::-webkit-scrollbar-track
+, pre::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+.s-scrollbar:hover::-webkit-scrollbar-thumb
+, pre::-webkit-scrollbar-thumb {
+  @apply s-bg-dim border;
+}
