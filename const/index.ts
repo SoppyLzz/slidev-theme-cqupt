@@ -21,9 +21,9 @@ export const defaultCquptConfig: CquptConfig = {
     },
 
     date: "",
-    meeting: "meeting name",
-    presenters: "presenter name",
-    instructors: "instructor name",
+    meeting: "",
+    presenters: "",
+    instructors: "",
 
     prefixes: {
         meeting: {
