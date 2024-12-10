@@ -116,7 +116,6 @@ layout: s-cols
 section: 章节二
 layout: s-sub-cover
 ---
-
 # 这是章节二
 
 添加说明吧
@@ -124,7 +123,6 @@ layout: s-sub-cover
 ---
 layout: s–vertical
 ---
-
 ::side::
 
 # 一些杂项
