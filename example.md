@@ -107,7 +107,7 @@ layout: s-cols
 
 ::col_3::
 
-<SImage src="/test/week_9_ontology.jpg" intro="这是右插槽" align="center"/>
+<SImage src="test/week_9_ontology.jpg" intro="这是右插槽" align="center"/>
 
 ---
 section: 章节二
@@ -122,8 +122,8 @@ layout: s-sub-cover
 background:
     name: SGradient
 vertical:
-    view: /test/view.jpg
-layout: s-vertical
+    view: 'test/view.jpg'
+layout:ertical
 hidden: hidden
 ---
 
