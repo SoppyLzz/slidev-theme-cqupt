@@ -224,6 +224,7 @@ layout: s-cols
 layout: s-cols
 ---
 
+::col_1::
 <s-image src='tmp/img-9.png' intro='实现结果' align='center' />
 
 ---
