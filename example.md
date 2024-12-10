@@ -121,10 +121,10 @@ layout: s-sub-cover
 ---
 background:
     name: SGradient
-layout: s-vertical
-hidden: hidden
 vertical:
     view: /test/view.jpg
+layout: s-vertical
+hidden: hidden
 ---
 
 ::side::
@@ -148,6 +148,7 @@ vertical:
 
 ```yaml
 ---
+
 background:
     name: SGradient
 layout: s-vertical
