@@ -1,8 +1,8 @@
 ---
 theme: ./
 layout: s-cover
-presenters: 第七组 | 罗之章
-meeting: 空信智
+presenters: 张世家、罗之章
+meeting: 遥感图像处理
 defaults:
   header:
     name: SNav
@@ -13,59 +13,24 @@ defaults:
     logo: school_logo.svg
 ---
 
-# 基于遥感影像的地面覆盖分类
-
-Land Cover Classification Based on Remote Sensing Image
+# 基于物候学决策树的湿地植被分类
+_Wetland vegetation classification based on climatological decision trees_
 
 ---
 layout: s-toc
-toc: 
-    r: 14
 ---
 
-# 自定义目录
-添加说明吧！
+# 目录
+
+$\text{CONTENT}$
 
 ---
-section: 鄱阳湖湿地分类
+section: 期刊与论文介绍
 layout: s-sub-cover
 ---
 
-# 基于 MODIS 数据集的湿地覆盖分类
-
-中国第一大淡水湖（鄱阳湖）湿地变化及其与三峡大坝的联系
-
----
-
-# 实验背景
-
-* **研究主题**：探讨鄱阳湖湿地变化与三峡大坝之间的关系；
-
-* **先前缺陷**：植被划分单一，没有做植被群落过渡变换的研究；关注时间尺度短；
-
-* **解决缺陷**：植被群落与生态功能相关，研究群落变换很有用；给15年卫星数据建立 **基于物候学** 的决策树；
-
-* **实验数据**：
-  * MODIS 250-m and 500-m Level-3 8-Day表面反射率产品，MODIS重访周期短，即使分辨率不高也可用于分析植被群落。
-  * 鄱阳湖七个水文站水位数据，未知部分采用 **纬度插值**；
-  * 鄱阳矢量探测图，采用 **Kriging interpolation插值** 后进行重采样到250m；
-  * 水深数据等于水位数据减去探测数据；
-  * 实地勘测的植被群落数据，用于验证MODIS数据；
-
-* **分类类型**：水体、滩涂和 5 个主要群落（CS、TP、SG、FAM 和 Zl）；
-
-* **实验步骤**：
-
-  1. 计算NDVI，做时间序列谐波分析（HANTS）减少噪音，平滑NDVI曲线；
-  2. 根据NDVI曲线特征，总结区别群落的决策树步骤；采用的决策树分类的评价指标有：
-  * 生产者与消费者精度：结果为75.0–92.9%
-  * 平均准确率：结果为82.4%
-  * Kappa系数：
-  3. 结果为0.77根据分析总结分类结果：
-  * 各种湿地面积变化曲线图 （Permanent Water、Mudflat、Vegetated area）
-  * 各种湿地比例变化曲线图（Water、Mudflat、5 types of field）
-  * 湿地群落变迁图
-  * TGD蓄水前后植被生长期水位图
+# 期刊与论文
+_Journals and Papers_
 
 ---
 layout: s-cols
@@ -73,23 +38,152 @@ layout: s-cols
 
 ::col_1::
 
-# 实验细节
+## 期刊介绍
 
-峰值寻找算法：
-> * [选取]：一阶导数法；
-> * [弃用]：自动多尺度峰值查找算法，即 $\text{AMPD}$ ；该方法要求信号是周期性的，但部分数据并不满足该条件，故没有使用；
+<span class="s-color-theme">《环境遥感 RSE》</span> 为地球观测界服务，发布有关研究的理论、科学、应用和技术的结果，有助于推进遥感科学的发展。<span class="s-color-theme">《环境遥感》</span>是完全跨学科的，发表关于陆地、海洋和大气传感的文章。该杂志的重点是从局部到全球范围的遥感的生物物理和定量方法，涵盖了广泛的应用和技术：
 
-阈值优化：
-> * <u>没有进行决策树阈值调整</u>；
+感兴趣的领域有：
+* 土地覆盖制图、植被物种识别和制图
+* 农业（作物测绘、产量预测、物候、土壤特性、管理实践）
+* 城市应用（测图、能源消耗、人口等）
+* 干扰（火灾、昆虫、收成）
+
+
+<s-card type="theme" header="Remote sensing of environment">
+
+* **SCI**：$Q1$
+* **CiteScore**：$25.1$
+* **Impact Factor**：$11.1$
+
+</s-card>
 
 ::col_2::
 
-<s-image src='tmp/img-7.png' intro='基于物候学的决策树' align='center' />
+<s-image src="./tmp/i1.jpg" intro="期刊封面"/>
+
+---
+layout: s-cols
+---
+
+::col_1::
+
+<s-image src="./tmp/i2.png" intro="三峡大坝与鄱阳湖位置，南矶山与鄱阳湖国家自然保护区范围"/>
+
+::col_2::
+
+## 论文介绍
+
+<span class="s-color-theme">《中国第一大淡水湖湿地变化及其与三峡大坝的联系》</span>
+
+* **研究主题**：研究鄱阳湖 $\text{2000-2014}$ 年的湿地植被变化与三峡大坝修建导致的水文状况转变之间的关系
+* **先前缺陷**：植被划分单一，没有做植被群落过渡变换的研究；关注时间尺度短；
+* **研究区域**：
+  
+  > 鄱阳湖位于江西省北部（北纬 28°22′–29°45′ 和东经 11°47′–116°45′），是中国最大的淡水湖。
+  >
+  > 雨季（4-9月）的淹没面积可达到大于$3000\text{km}^2$，旱季（10月至次年3月）减少到小于$1000\text{km}^2$。
+  > 
+  > 每年 4 月至 6 月，由于湖流域的强降水，鄱阳湖的水位可能会显着上升。在夏季，当长江水位高于湖泊水位时，可能会出现河湖逆流，导致最大洪水泛滥。从每年的 10 月到次年 3 月，湖水位在很大程度上取决于鄱阳湖和长江之间的水位差。
+
+---
+layout: s-cols
+---
+
+::col_1::
+
+## 研究对象
+
+MODIS
+遥感数据可能识别的鄱阳湖湿地覆盖类型包括水体、泥滩、和<span class="s-color-theme">五种主要的湿地植被群落</span>：
+
+* 苔草群落（缩写为Cs）主要由：
+
+  > *灰化苔草* | `Carex cinerascens` 、 
+  >
+  > *阿及苔草* | `Carex argi` 、
+  >
+  > *单性苔草* | `C.unisexualis` 这三种苔草组成；
+  
+* 芦苇-南荻（缩写为TP）；
+
+    > 该群落分布于鄱阳湖**高程最高**的地带，主要呈现带状分布于蚌湖南侧、东南侧以及南矶山。该群落由三层构成：
+    >
+    > * 最上层为南荻芦苇高度可达$\text{1.5-3.0}$米；
+    > * 第二层为苔草同时也有一些伴生物种，例如：艾草、牛鞭草等；
+    > * 最下层为菊叶委陵菜构成；
+
+* 虉草-蓼子草群落（缩写为SG）；
+
+* 浮叶植物群落（缩写为FAM）；
+
+* 菰群群落（写为Zl）；
+
+
+
+::col_2::
+
+## 实验数据
+
+### 一、湿地植被分类研究：
+
+  * $\text{MODIS 250-m and 500-m Level-3 8-Day}$ 表面反射率产品；
+
+    > MODIS重访周期短，即使分辨率不高也可用于分析植被群落。
+    >
+    >
+    > 使用 <span class="s-color-theme">时间序列谐波分析 $\text{HANTS}$ 算法</span> 减少噪音，平滑 $\text{NDVI}$ 曲线；
+
+  * 实地勘测的植被群落数据，用于验证 $\text{MODIS}$ 数据；
+
+### 二、鄱阳湖水位变化研究：
+
+  * 鄱阳湖七个水文站水位数据，未知部分采用  <span class="s-color-theme">纬度插值</span>；
+  * 鄱阳矢量探测图，采用 <span class="s-color-theme">$\text{Kriging}$ 插值</span> 后进行重采样到 $\text{250m}$；
+  * 水深数据等于水位数据减去探测数据；
+
+
+
+---
+layout: s-vertical
+---
+
+::side::
+
+# 构建基于物候学的决策树
+*Building a phenology-based decision tree*
+
+::col_1::
+
+## 光谱分析
+
+鄱阳湖湿地不同植被类型在某些光谱范围具有<u>独特的反射特征</u>，但是由于不同植被之间光谱形状在<u>可见光</u>和<u>近红外波段</u>存在<span class="s-color-theme">较大相似性</span>。
+
+难以从单一的光谱信息中对各种不同群落进行精确分类。
+
+## 时序谱分析
+
+选取7种地表覆盖类型对应的 $\text{MODIS NDVI}$ 时序谱进行对比分析。
+
+* 长年<span class="s-color-theme">水体</span>覆盖区域的时序谱均显示为负值，
+
+* <span class="s-color-theme">泥滩</span>的时序谱在全年中大部分时间为负值。
+
+* 尽管泥滩与<span class="s-color-theme">虉草-蓼子草群落</span>的时序谱十分相似，但是虉草-蓼子草群落在冬季高于泥滩。
+
+* <span class="s-color-theme">浮叶植物群落</span>丰水期为正值，枯水期为负值。
+
+* 作为一种典型的挺水植被，<span class="s-color-theme">菰</span>的均高出其他类型植被的，特别是在180天之后。
+
+* <span class="s-color-theme">苔草群落</span>与<span class="s-color-theme">芦苇-南荻群落</span>具有相似的物候，因此很难从遥感影像上区分。
+
+    > 我们可以通过两者**地势差异**与**生长际**来区分两种群落
+
 
 
 ::col_3::
 
-<s-image src='tmp/img-8.png' intro='论文中分类结果' align='center' />
+<s-image src="./tmp/i3.png" intro="湿地植被光谱与时序谱" align="center"/>
+
 
 
 ---
@@ -97,81 +191,47 @@ layout: s-cols
 ---
 
 ::col_1::
-<s-image src='tmp/img-9.png' intro='实现结果' align='center' />
+
+## 决策树概括：
+
+* 如果46个8天NDVI复合值持续为负，则该像素在该年被归类为水域；
+* 如果NDVI值是正的，并且4月至9月（雨季）的平均NDVI大于0.7，则被归类为Zl；
+* 如果NDVI值在4月至9月之间出现峰值，则该像素被视为FAM；
+* 数据在4月之前NDVI单调递减，4月至9月之间NDVI为负值被选中。从这些数据中，如果一年的最大NDVI大于0.21，则像素被分类为SG；否则，像素被分类为滩涂。0.21的阈值确定如下：从分类的Landsat图像中划定了滩涂区域，其中计算了同一 Landsat 年份的相应MODIS NDVI平均值。平均NDVI加 2 倍标准差（即 0.21）被用作分类滩涂的阈值；
+* 如果像素不属于上述4个类别，则检查NDVI时间形状以确定是否可以找到两个局部峰值：
+    * 如果找不到两个局部峰值，则该像素被视为未知；
+    * 如果有两个局部峰值，则与建立的基于直方图的分类进行比较；
+
+
+::col_2::
+
+<s-image src="./tmp/i4.png" intro="基于物候学的决策树，应用于MODIS像素" align="center"></s-image>
 
 ---
-section: 建筑物识别
+layout: s-cols
+---
+
+# 论文结果
+
+论文的 **结果** | `Result` 部分主要分析了各种湿地植被在 $\text{2000-2014}$ 年间的分布与变化；而三峡大坝修建引起的水深变化对湿地植被群落分布的影响，作者则在 **讨论** | `Discussion` 中提及。以下是部分湿地植被分布的可视化图像：
+
+::col_1::
+
+<s-image src="./tmp/i5.png" intro="湿地植被年际变化可视化图" align="center"/>
+
+::col_2::
+
+<s-image src="./tmp/i6.png" intro="鄱阳湖水深图" align="center"/>
+
+
+---
 layout: s-sub-cover
+section: 实验复现
 ---
 
-# 基于 LCZ 数据集的城市建成区分类
-`DRSNet` 小块低分辨率遥感影像场景分类体系结构
+# 实验复现
+*Experimental Reproduction*
 
----
-layout: s-cols
----
-
-# 论文介绍
-
-期刊名：$\text{International Journal of Applied Earth Observation and Geoinformation}$
-
-::col_1::
-
-期刊投递范围：地球观测数据应用，自然资源管理，环境检测与评估，地理信息系统（GIS）与地理空间分析，灾害管理与应急响应，遥感技术创新与方法，跨学科的地球观测研究。
-
-影响因子：$text{7.6}$
-
-期刊关键词：`geoinformation`、`earth observation data`、`natural resources`、`environment`
-
-$\text{SCI}$ 分区：Q1
-
-::col_2::
-
-<s-image src='tmp/img-1.png' intro='期刊封面' align='center' />
-
----
-layout: s-cols
----
-
-# 研究背景及现状
-对于土地利用和覆盖分类，深度学习（DL）由于其与传统方法相比的出色性能而引起了遥感（RS）社区的关注，而卷积神经网络（CNN）就是用于图像识别任务的最知名的DL方法，已经在RS领域的几篇公开论文中使用，具有最先进的结果。然而：
-
-::col_1::
-
-<s-align align="center" direction="vertical">
-<s-card header="问题一" type="primary">
-1、目前采用中等或低分辨率遥感数据（如Landsat 8）进行场景分类或图像分割任务的相关研究很少。
-</s-card>
-
-<s-card header="问题二" type="primary">
-2、此外，现有的CNN结构用于RS图像识别的能力应该得到提高，比如：随机森林机器学习算法优于一些CNN方案、轻量CNN结构近年来的广泛研究、深度神经网络的计算复杂性和资源消耗持续增加。经典的CNN架构（诸如AlexNet和VGG）关于网络参数的总量是冗余的。
-</s-card>
-</s-align>
-
-::col_2::
-
-<s-image src='tmp/img-2.png' intro='高分二号图像' align='center' />
-
----
-layout: s-cols
----
-
-::col_1::
-# 论文亮点
-
-1、建立了一个新的Landsat 8数据集，用于遥感图像识别，这个数据集的特点是中/低空间分辨率和小尺寸大小。
-
-2、提出了一种称为DRSNet的新型CNN架构用于RS图像场景分类，并在我们的数据集中实现了比现有CNN模型（2021）更高的分类精度。该网络在几个公共RS数据集上的性能也优于同类网络，表现出良好的泛化能力。
-
-3、提供了一种有效的、具有成本效益的方法。模型在笔记本电脑上高效运行，并且在金钱上是有效的，因为它使用免费提供的，易于访问的Landsat 8图像。
-
-::col_2::
-
-# 实验数据
-
-> 本次实验采用了Landsat 8数据集，覆盖了中国东莞市的整个地区，包含LCZ分类系统的17个子类中的13个，空间分辨率为30米/格网的遥感产品，总共有2432个和809个小块分别被标记用于模型训练和测试，然后扩充数据增加总数，每个样品旋转90°、180°和270°。然后，翻转所获得的四个样本。
-
-> 另外，为了测试网络的泛化性。还使用了其他数据集包括EuroSAT（哨兵2号,10米/像素,64 × 64）、Brazilian Coffee Scenes(SPOT传感器,10米/像素,64 × 64)和UCMerced(航空图像,1英尺/像素,256 × 256)。
 
 
 ---
@@ -179,53 +239,37 @@ layout: s-cols
 ---
 
 ::col_1::
+## 时间序列谐波分析滤波算法：
+* **时间序列谐波分析** | `HANTS` ，它结合了平滑和滤波技术, 进行影像重构时充分考虑植被生长周期性和数据本身的双重特点，能够用代表不同生长周期的植被频率曲线重新构建时序$\text{NDVI}$影像，真实反映植被的周期性变化规律
+* 核心算法是傅里叶变换和最小二乘法拟合, 即把时间波谱数据分解成许多不同相位、频率和幅度的正弦曲线和余弦曲线，从中选取若干个能够反映时间序列特征的曲线进行叠加，以达到时间序列数据的重建目的
 
-特征学习模块（RICA Ⅰ和RICA Ⅱ）：学习高级内在特征。
+$$
+y(t) = a_0 + \sum_{k=1}^{K} \left[ a_k \cos\left(\frac{2\pi k t}{T}\right) + b_k \sin\left(\frac{2\pi k t}{T}\right) \right]
+$$
 
-* 第一步，RICA Ⅰ块使用三个不同的卷积分支，RICA Ⅱ块使用两个卷积分支、1 × 7与7 × 1的大核用来涵盖额外的全局信息，然后进行级联，之后通过1 × 1卷积层，以增加模块的非线性并减少输出通道的数量。
+> * $y(t)$：时序数据在时间t的值
+> * $a_k$：第$k$阶谐波的余弦项系数
+> * $b_k$：第$k$阶谐波的正弦项系数
+> * $K$：使用的谐波分量数量
+> * $T$：时间序列的总长度（周期）
 
-* 第二步，首先使用全局池化来获得通道统计量，其次，执行两个具有通道缩减率 r 的 1 × 1 卷积层。
-
-* 第三步，使用带有 sigmoid 函数的门控机制来获。得加权统计量，将原始特征图与统计量相乘获得逐通道加权特征图。最后与原始图像相加获得特征图。
 
 
 ::col_2::
 
-<s-image src='tmp/img-3.png' intro='RICA Ⅰ(上)和RICA Ⅱ(下)网络结构图' align='center' />
+<s-image src="./tmp/i7.png" intro="选取的某个点在一年内的NDVI时序变化及滤波图" align="center"/>
+
+
 
 ---
 layout: s-cols
 ---
 
 ::col_1::
-
-<s-image src='tmp/img-4.png' intro='复现代码(一)' align='center' />
-
-::col_2::
-
-<s-image src='tmp/img-5.png' intro='复现代码(二)' align='center' />
-
----
-layout: s-cols
----
-
-# 结果分析
-
-::col_1::
-
-用于性能评估的指标包括交叉熵损失、总体准确性 (OA) 和 Kappa 系数。其中OA在暂时下降后迅速增加，然后达到稳定水平。在0.89左右小幅波动，最高值为0.9036。
-
-八个类别的准确率超过或接近90%，DRSNet 在除 LCZ E (70.00%) 之外的所有自然类别中都表现得非常好
-
-> DRSNet 在 Landsat 8、Brazilian Coffee Scenes 和 UCMerced 上取得了最佳分类结果，在 EuroSAT 上取得了第二高的 OA 和 Kappa 分类结果。
-> 
-> DRSNet的所有模块都遵循尽可能利用小内核和步幅的理念，并采用缩减模块而不是池化层进行下采样。 RICA 块提取全局和局部特征，并利用不同通道的潜力。上采样步骤在检索丢失的信息中发挥着关键作用，特征学习模块之间的密集快捷连接丰富了最终全局池化的信息。在低分辨率并且图像尺寸较小的数据集上表现良好。
-> 
-> 同时 DRSNet 还具有良好的泛化能力，在不同的数据集上表现出良好的精度，尽管是高分辨率、大尺寸 RS 图像。
+<s-image src="./tmp/i8.png" intro="2006年鄱阳湖湿地覆盖分类结果图" align="center"/>
 
 ::col_2::
-
-<s-image src='tmp/img-6.png' intro='混淆矩阵' align='center' />
+<s-image src="./tmp/i9.png" intro="2000-2014年鄱阳湖湿地覆盖分类图" align="center"/>
 
 ---
 layout: s-end

@@ -53,10 +53,10 @@ export const defaultCquptConfig: CquptConfig = {
     toc: { r: 10 },
     cols: { overflow: "hidden" }, // align function realized by a comp
     vertical: {
-        view: "test/view.jpg",
+        view: "view.jpg",
         fromTo: "ltr",
         overflow: "auto",
-        direction: "horizontal",
+        direction: "vertical",
     }
 }
 
