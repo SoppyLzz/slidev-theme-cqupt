@@ -28,7 +28,7 @@ export const defaultCquptConfig: CquptConfig = {
     prefixes: {
         meeting: {
             icon: "SiBook",
-            prefix: "会议"
+            prefix: "课程"
         },
         date: {
             icon: "SiTime",
