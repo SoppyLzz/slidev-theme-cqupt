@@ -9,6 +9,11 @@ export default defineConfig({
         's-bg-deep': 'bg-[var(--s-bg-deep)]',
 
         's-color-theme': 'text-[var(--s-theme)] fill-[var(--s-theme)]',
+        's-color-primary': 'text-[var(--s-primary)] fill-[var(--s-primary)]',
+        's-color-success': 'text-[var(--s-success)] fill-[var(--s-success)]',
+        's-color-info': 'text-[var(--s-info)] fill-[var(--s-info)]',
+        's-color-warning': 'text-[var(--s-warning)] fill-[var(--s-warning)]',
+        's-color-danger': 'text-[var(--s-danger)] fill-[var(--s-danger)]',
         's-color-deep': 'text-[var(--s-line-deep)] fill-[var(--s-line-deep)]',
         's-color-base': 'text-[var(--s-line-base)] fill-[var(--s-line-base)]',
         's-color-fade': 'text-[var(--s-line-fade)] fill-[var(--s-line-fade)]',
