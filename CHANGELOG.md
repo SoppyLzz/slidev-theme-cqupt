@@ -1,5 +1,11 @@
 
 
+## <small>1.0.2 (2025-01-28)</small>
+
+* feat(asd): asd ([daedf12](https://github.com/SoppyLzz/slidev-theme-cqupt/commit/daedf12))
+* feat(debug): asd ([143c299](https://github.com/SoppyLzz/slidev-theme-cqupt/commit/143c299))
+* fix(test fix): asd ([b201787](https://github.com/SoppyLzz/slidev-theme-cqupt/commit/b201787))
+
 ## <small>1.0.1 (2025-01-28)</small>
 
 ## 1.0.0 (2025-01-28)
