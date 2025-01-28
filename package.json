@@ -20,6 +20,10 @@
     "release": "release-it",
     "commitlint": "commitlint --edit"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SoppyLzz/slidev-theme-cqupt.git"
+  },
   "dependencies": {
     "@slidev/types": "^0.50.0-beta.5"
   },
