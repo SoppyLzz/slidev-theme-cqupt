@@ -2,8 +2,7 @@
 theme: ./
 layout: s-cover
 presenters: 罗之章
-meeting: 组会
-instructors: 梁栋
+meeting: 自然语言处理
 defaults:
   header:
     name: SNav
@@ -14,8 +13,8 @@ defaults:
     logo: school_logo.svg
 ---
 
-# 时空融合方法调研与实验计划
-_Winter Break Learning Report for the 2024-2025 School Year_
+# 自然语言处理课程汇报
+Natural Language Processing Course Debriefing
 
 ---
 layout: s-toc
@@ -26,222 +25,85 @@ layout: s-toc
 $\text{CONTENT}$
 
 ---
-section: STARFM
+section: 论文介绍
 layout: s-sub-cover
 ---
 
-# Landsat和MODIS表面反射率的融合：预测Landsat每日地表反射率
+# 一、论文介绍
 
-On the Blending of the Landsat and MODIS Surface Reflectance: Predicting Daily Landsat Surface Reflectance
+1st. Paper Introduction
 
 ---
 layout: s-cols
 ---
 
-## 论文简介
-
-
+## **1.1. 论文简介**
 
 ::col_1::
 
-Landsat和MODIS表面反射率的融合：预测Landsat每日地表反射率
-
-> 这篇论文提出了一种时空自适应反射率融合模型（STARFM），旨在结合Landsat的高空间分辨率（30米）和MODIS的高时间分辨率（每日观测），生成兼具高时空分辨率的“每日”地表反射率产品。
-
-* **作者**：$\text{Gao Feng}$
-* **日期**：$2006$
-
-
+* **标题**：Pre-trained Language Model with Entity Information for Relation Classification
+* **翻译**：用实体信息丰富预训练语言模型以进行关系分类
+* **作者**：Shanchan Wu
+* **日期**：2019
 
 <s-card type="theme" header="论文来源">
 
-* **h-index**：$216$
-* **CiteScore**：$11.5$​
-* **CAS**：地球科学1区Top
-* **Journal**：IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING
+* **Conference**：CIKM
+* **CCF**：B
+* **Arxiv**：[[1905.08284\] Enriching Pre-trained Language Model with Entity Information for Relation Classification](https://arxiv.org/abs/1905.08284)（2018）
 
 </s-card>
 
+> 这篇论文提出了一种通过将目标实体信息融入预训练BERT模型的方法，即 `R-BERT` ，显著提升了关系分类任务的性能，并在SemEval-2010任务8数据集上取得了当时的最好结果。
+
 
 
 ::col_2::
 
-<s-image src="./fusion/STARFM_cover.png" intro="论文"/>
-
-
+<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/image-20250411142923957-1744352964052.png" intro="figure 1. 论文简介"/>
 
 ---
-
-
-
-## 时空自适应反射率融合模型(STARFM)：
-
-传统数据融合方法，如HSV变换，PCA，小波变换不适用于此类问题，作者希望捕获由物候学引起的辐射(地表反射率)的定量变化；
-
-
-
-* <span class="s-color-primary">**\[假设]**</span>：MODIS粗像素的值等于对应区域Landsat所有像素的值加权平均；
-    $$
-    \begin{align*}
-    
-    C_t &= \Sigma_i(F_{it}\times A_{it})
-    
-    \end{align*}
-    $$
-
-* 重采样MODIS数据到Landsat的空间分辨率，记作$M(x_i, y_j, t_k)$；
-    $$
-    \begin{align*}
-    
-    L(x_i, y_i, t_k) &= M(x_i, y_j, t_k) + \varepsilon_k \\\\
-    
-    L_{ijk} &= M_{ijk} + \varepsilon_k
-    
-    \end{align*}
-    $$
-
-* <span class="s-color-primary">**\[假设]**</span>: 在像元$(x_i, y_j)$处$t_0$与$t_k$时刻MODIS与Landsat间系统误差不变；
-
-    > 1. MODIS往往不是一个同质像元，在Landsat的分辨率下可能混有不同类型的地表覆盖类型；
-    > 2. 预测时间段内，地表覆盖类型会变；
-    > 3.  的物候状态与太阳几何双向反射分布函数(BRDF)会影像反射率；
-    >
-    > 因此在预测Landsat-like像素时，需要考虑邻近像素以减少上述影响；
-
-
-
+layout: s-vertical
 ---
 
+::side::
+
+## **1.2. 相关概念**
+
+Related concepts
 
 
-* **Core**：
-
-    STARFM使用窗口$(w\times w)$滑动，使用$n$对fine & coarse输入，实现对$t_0$时刻考虑**邻近相似像素**的时空融合；
-
-    为了方便，有如下符号映射：$L(x_t, y_t, t_k) = L_{ijk}$、$L(x_{w/2},y_{w/2},t_{k}) = L_{(w/2,w/2.k)}$；
-    $$
-    \begin{align*}
-    
-    L_{(w/2,w/2.k)} &= \sum_{i=1}^{w}\sum_{j=1}^{w}\sum_{k=1}^{n}W_{ijk} \times (M_{ij0}+L_{ijk}-M_{ijk})
-    
-    \end{align*}
-    $$
-    在进行时空融合时，需要考虑光谱差异(fine v.s. coarse)、时间差异(fine)、位置差异(at fine res)，作者构建了如下指标：
-
-    1. $S_{ijk} = \left| L_{ijk} - M_{ijk} \right|$
-
-        > <span class="s-color-primary">**\[假设]**</span>：fine的变化与coarse变化具有可比性；
-        >
-        > 
-        >
-        > 当$S_{ijk}$值越小，对于像元$(x_i, y_j)$的$W_{ijk}$应当越大；
-
-    2. $T_{ijk} = \left| M_{ijk} - M_{ij0} \right|$
-
-        > <span class="s-color-primary">**\[假设]**</span>：coarse反射率随时间不变，fine反射率也应当不改变；
-        >
-        > 
-        >
-        > 文章这里提到**该假设**可以用作<u>部分</u>去云，我的理解是使用fine-like像素的部分影像替代原来的有云影像；
-        >
-        > 文章还探讨了微小变化与coarse间的关系；
-
-
-
----
-layout: s-cols
----
-
-::col_1::
-
-* **Core**：
-
-    3. $D_{ijk}$：
-        $$
-        \begin{align*}
-        d_{ijk} &= \sqrt{(x_{w/2}-x_i)^2+(y_{w/2}-y_j)^2} \\\\
-        
-        D_{ijk} &= 1 + \frac{d_{ijk}}{A}
-        \end{align*}
-        $$
-
-        > 其中$A$是一个人为设置的常数，它定义了空间距离对光谱和时间距离的相对重要性；
-
-    4. $W_{ijk}$：
-        $$
-        \begin{align*}
-        
-        C_{ijk} &= S_{ijk}\times T_{ijk}\times D_{ijk} \tag{1} \\\\
-        
-        C_{ijk} &= \ln(S_{ijk}\times B + 1) \times \ln(T_{ijk}\times B + 1) \times D_{ijk} \tag{2} \\\\
-        
-        W_{ijk} &= \frac{1/C_{ijk}}{\sum_i\sum_j\sum_{k=1}^n(1/C_{ijk})} \tag{3}
-        
-        \end{align*}
-        $$
-
-::col_2::
-
-
-
-* 公式$(1)$是普通版本$C_{ijk}$；也可以使用逻辑映射，即公式$(2)$，使$C_{ijk}$对**光谱异常**不敏感；
-
-    > 有如下可能导致异常情况：
-    >
-    > 1. coarse像元是一个同质像元，参考的fine与coarse变化较小；
-    >
-    > 2. coarse在时间间隔内变化较小；
-
-* 公式$(3)$实际上就是在构建<u>加权平均系数</u>；
-
-> 需要注意，当coarse在时间间隔内不变，即$T_{ijk}=0$，$C_{ijk}=0$，此时$W_{ijk}$取最大值；
-
-
-
-
----
-
-* **Core**：
-
-    5. 候选点处理：
-
-        STARFM要求我们找出窗口中心点$(x_{w/2}, y_{w/2})$在窗口中$n$个的**光谱相似**邻居像素(fine pixel)；文中提到的查找方法有：
-
-        * 在数据融合前进行无监督分类
-
-        * 在STARM执行中设置光谱阈值，找到光谱相似邻居像素；
-
-            > 文中采用R、NIR波段的反射率来确定光谱相似像素；
-
-        STARFM要求我们对候选点进行进一步的过滤，候选点过滤的最终条件如下：
-        $$
-        \begin{align*}
-        
-        S_{ijk} &< \max{(\left| L_{(w/2, w/2, k)}-M_{(w/2, w/2, k)} \right|)} + \sigma_{lm} \\
-        
-        T_{ijk} &< \max{(\left| M_{(w/2, w/2, k)}-M_{(w/2, w/2, 0)} \right|)} + \sigma_{mm} \\\\
-        
-        \sigma_{mm} &= \sqrt{\sigma_m^2 + \sigma_m^2} \\
-        
-        \sigma_{lm} &= \sqrt{\sigma_l^2 + \sigma_m^2}
-        
-        \end{align*}
-        $$
-        
-    
-        > 注意$\sigma_{lm}$与$\sigma_{mm}$是根据Landsat与MODIS产品的QA层(基于CFMASK算法生成的像元质量波段)得出的，表示不同影像间地表反射率的不确定性；
-    
-        ​	
-
----
-layout: s-cols
----
 
 ::col_1::
 
 
 
-<s-image src="./fusion/STARFM.png" intro="STARFM时空融合方法流程图" align="center"/>
+<s-align align="center" direction="vertical">
+
+
+
+### **1.2.1. 关系分类** | `Relation classification`：
+
+关系分类是提取实体之间语义关系的重要NLP任务。
+
+> 给定一个文本序列（通常是一个句子）`s` 和一对名词 `e` 和 `e`，关系分类目标是识别 `e` 和 `e` 之间的关系；
+>
+> 例如：“The [kitchen]<sub>e1</sub> is the last renovated part of the [house]<sub>e1</sub>.”，这展示了名词 “kitchen” 和 “house” 之间的 “component-whole” 关系；
+
+先前的关系分类最优模型通常是基于 `CNN` 或 `RNN` 。最近，预训练BERT模型在自然语言处理的分类或序列标注的任务上获得最好效果。
+
+
+
+<br/>
+
+### **1.2.2. 预训练BERT**：
+
+预训练BERT是Devlin等基于 `Transformer` 提出的双向编码器，BERT预训练算法有：
+
+* <span class="s-color-primary">**Masked Language Model**</span>
+* <span class="s-color-primary">**Next Sentence Prediction**</span>；
+
+</s-align>
 
 
 
@@ -249,69 +111,55 @@ layout: s-cols
 
 
 
-## 算法性能测试：
+<s-align align="center" direction="vertical">
+
+### **1.2.3. 相关工作**：
 
 
 
-* 反射率变化检测✔️
+| 方法名称                 | 作者              | 年份  | 关键贡献/特点                                                |
+| ------------------------ | ----------------- | ----- | ------------------------------------------------------------ |
+| MVRNN                    | Socher et al.     | 2012  | 使用递归神经网络（RNN）和句法树结构自底向上构建句子表示      |
+| CNN+Softmax              | Zeng et al.       | 2014  | 结合词嵌入和位置特征，CNN输出与词汇特征结合进行预测          |
+| FCM                      | Yu et al.         | 2014  | 通过依赖树和命名实体构建句子和子结构嵌入                     |
+| CR-CNN                   | dos Santos et al. | 2015  | 基于卷积神经网络和成对排序损失函数进行关系分类               |
+| Attention CNN            | Shen and Huang    | 2016  | CNN编码器结合目标实体的注意力机制                            |
+| Att-Pooling-CNN          | Wang et al.       | 2016  | 两级注意力机制捕捉异构上下文中的模式                         |
+| Entity Attention Bi-LSTM | Lee et al.        | 2019  | 端到端RNN模型，结合实体感知注意力和潜在实体类型              |
+| 远程监督方法             | Mintz et al., 等  | 2009+ | 处理远程监督数据中的噪声标签（如Hoffmann、Lin、Ji等的研究），但本文专注于无噪声的常规关系分类 |
 
-* 线性对象检测✔️
 
-* 形状变化检测❌
 
-    > 在地物类别发生变化的情况下，STARFM预测的空间分辨率无法与原始细分辨率图像完全匹配；
-
-* **小对象检测**
-
-    > 对于小对象，一种处理方法是增加搜索窗口的大小，并在更大的区域内寻找纯粗分辨率的像素。找到这样的纯像素后，预测会明显更准确；我的理解是窗口小无法找到**足够多**的小对象中fine pixel对应的光谱相似邻居像素；  
-    >
-    > 需要注意的是，文中的小对象测试中小对象是单独存在，不是多个不同小对象同时存在，存在局限性； 
-
+</s-align>
 
 
 
 ---
-section: Fit-FC
+section: 模型介绍
 layout: s-sub-cover
 ---
 
-# Sentinel-2图像的每日数据时空融合
+# 二、模型介绍
 
-Spatio-temporal fusion for daily Sentinel-2 images
+2nd. Model Introduction
 
 ---
 layout: s-cols
 ---
 
-## 论文简介
 
+## **2.1. 数据处理**
 
+本文使用了BERR句首的特殊符号 `[CLS]` ，`[CLS]` 经过BERT处理后的词向量常被用于文本分类等下游任务。此外，在每个实体的两侧，本文也相应的插入特殊符号，第一个实体两侧的特殊符号是 `$` ，第二个实体两侧是 `#` 。文本处理完毕后的效果如下：
 
-::col_2::
-
-Sentinel-2图像的每日数据时空融合
-
-> 这篇论文提出了一种名为Fit-FC的创新方法，用于融合Sentinel-2和Sentinel-3卫星影像，生成接近每日更新的高分辨率（10米）地表观测数据。
-
-* **作者**：$\text{Qunming Wang}$
-* **日期**：$2018$
-
-
-
-<s-card type="theme" header="论文来源">
-
-* **h-index**：$34$
-* **CiteScore**：$11.2$
-* **CAS**：地球科学1区Top
-* **Journal**：Remote Sensing of Environment
-
-</s-card>
+> * “The [kitchen]<sub>e1</sub> is the last renovated part of the [house]<sub>e1</sub>.”
+> * [CLS] The \$ kitchen \$ is the last renovated part of the # house # .
 
 
 
 ::col_1::
 
-<s-image src="./fusion/fit-fc_cover.png" intro="论文"  align="center"/>
+<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/image-20250411154334696-1744357414804.png" intro="figure 2. 模型结构"/>
 
 
 
@@ -319,43 +167,33 @@ Sentinel-2图像的每日数据时空融合
 layout: s-cols
 ---
 
-## 摘要与简介总结：
+## **2.2. 模型介绍**
+
+模型由三个主要部分组成，一部分是BERT模型，用于提取文本的向量表示；模型的第二部分对从BERT获得的词向量进行处理；模型第三部分将第二部分处理结果拼接然后继续进行处理；
 
 ::col_1::
 
-现有的时空融合方法：
 
-* **STARFM**算法及其改进算法
 
-    > 具体有：**STARFM**、**ESTARFM**、**STAARCH**；
+### **2.2.1. 全连接层：**
 
-* 基于学习的方法：
+模型的第二部分对从BERT获得的词向量进行处理。对于实体向量，由于<span class="s-color-primary">**实体可能包含不止一个词**</span>，所以本文将实体包含的词向量进行加和平均来得到实体的向量表示。公式如下：
 
-    > 1. 稀疏表示|sparse representation
-    > 2. 极值学习机|extreme learning machine
-    > 3. 人工智能、SVR、深度学习
-    
-* 基于空间解混的方法：
+> 以模型图为例，`Entity 1`在未处理文本中的表示是 `Ti～Tj` ，经BERT后的词向量为 `Hi～Hj` ，将其<span class="s-color-primary">**加和平均**</span>后，再过一个 `dropout`（公式中没有标注，但在源码中使用），一个 `tanh` 激活以及一个全连接层得到实体表示
 
-    > 相关方法：**SRCM**、**U-STFM**
+$$
+\begin{align*}
+H_{1}' &= W_{1} \left[ \tanh\left( \frac{1}{j - i + 1} \sum_{t=i}^{j} H_{t} \right) \right] + b_{1} \\
+H_{2}' &= W_{2} \left[ \tanh\left( \frac{1}{m - k + 1} \sum_{t=k}^{m} H_{t} \right) \right] + b_{2}
+\end{align*}
+$$
 
-* 基于上述方法的混合方法
-
-    > 例如**FSDAF**方法是结合解混和STARFM的融合方法
 
 ::col_2::
 
-空间解混与光谱解混：
 
-* **光谱解混**：假设已知端元光谱，通过分解混合像元计算不同地物类别所占比例（丰度）。
 
-* **空间解混**：假设已知类别比例（如通过高分辨率分类图升尺度得到），反演低分辨率像元内的端元光谱。
-
-> 空间解混<span class="s-color-primary"><u>假设</u></span>在感兴趣时间内没有发生地表覆盖类型的变化，端元比例保持不变；
-
-本文方法旨在解决强烈时间变化条件下的时空数据融合，相关方法有：**U-STFM**、**FSDAF**
-
-> **U-STFM**至少需要两个粗细图像对，**FSDAF**则只需要一个；
+<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/image-20250411160309506-1744358589577.png" intro="figure 3. BERT词向量处理"/>
 
 
 
@@ -363,52 +201,43 @@ layout: s-cols
 layout: s-cols
 ---
 
-## 回归滤波补偿三步法(Fit-FC)：
+::col_2::
 
-不同于STARFM方法，Fit-FC采用<span class="s-color-danger">**两个窗口**</span>进行滑动，使用一对fine & coarse输入，实现对$t_2$时刻的时空融合；
+
+
+<s-align align="center" direction="vertical">
+
+对于模型的句首的特殊标记 `[CLS]` ，模型也经过类似的处理，得到了 `[CLS]` 最终的向量表示：
+
+$$ H_{0}' = W_{0} \left( \tanh(H_{0}) \right) + b_{0} $$
+
+需要注意的是论文中将这上述三个全连接层进行了<span class="s-color-danger">**参数共享**</span>，即：$W_0 = W_1 = W_2$，$b_0 = b_1 = b_2$；
+
+### **2.2.2. 分类：**
+
+模型的第三部分将第二部分获得三个向量 $(H_{0}', H_{1}', H_{2}')$ 进行拼接并送入全连接层中，最后通过softmax进行分类。
+
+
+
+</s-align>
 
 
 
 ::col_1::
 
-1. 构建局部回归模型(RM)：
-    $$
-    \begin{align*}
-    
-    C_{2}\left(X, l_{b}\right)&=a\left(X, l_{b}\right) C_{1}\left(X, l_{b}\right)+b\left(X, l_{b}\right)+R\left(X, l_{b}\right) \\\\
-    
-    \widehat{F}_{RM}\left(x_{0}, l_{b}\right)&=a\left(X_{0}, l_{b}\right) F_{1}\left(x_{0}, l_{b}\right)+b\left(X_{0}, l_{b}\right)
-    
-    \end{align*}
-    $$
-
-    > 不同于STARFM，Fit-FC使用**第一个窗口**在coarse遥感图像上滑动，获得初步的线性回归模型；
-    >
-    > 需要注意的点有：
-    >
-    > * $R\left(X, l_{b}\right)$是回归模型预测值$\widehat{C_{2}}\left(X, l_{b}\right)$与实际值$C_{2}\left(X, l_{b}\right)$的插值；
-    > * 窗口大小一定要大于2个coarse像素，文中使用的coarse window大小为$15\times 15$；
-    > * $X_0$是覆盖像元$x_0$的Sentinel-3像元。
 
 
+<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/image-20250411161833534-1744359513605.png" intro="figure 4. 全连接+softmax分类"/>
 
-::col_2::
 
-2. 空间滤波(SF)：
+---
+section: 实验介绍
+layout: s-sub-cover
+---
 
-    由于回归系数在300米尺度计算，直接应用于10米影像会导致每个300米块内像元反射率相同，形成明显块状伪影；块状伪影是因为光谱像素相邻像素在使用回归模型预测后光谱差异过大；
-    $$
-    \begin{align*}
-    
-    D&=\sqrt{\sum_{b=1}^{4}\left[F_{1}\left(x_{i}, l_{b}\right)-F_{1}\left(x_{0}, l_{b}\right)\right]^{2}/ 4}
-    
-    \end{align*}
-    $$
+# 三、实验介绍
 
-    > 参考STARFM的思路，该方法使用**另一个窗口**在fine像素中找寻光谱差异性最小(窗口内$D$值最小)的$n$个像元，文中设置$n=30$；
-    >
-    > <span class="s-color-warning">**\[可能缺陷]**</span>：文中建议的使用范围为 Sentinel-2/3 的**R、G、B、NIR**波段；
-
+2nd. Experiment Introduction
 
 
 ---
@@ -416,52 +245,46 @@ layout: s-cols
 ---
 
 ::col_1::
+## **3.1. 对比实验**
 
-2. 空间滤波(SF)：
-    $$
-    \begin{align*}
-    
-    \widehat{F}_{SF}\left(x_{0}, l_{b}\right)&=\sum_{i=1}^{n} W_{i}\widehat{F}_{RM}\left(x_{i}, l_{b}\right) \\\\
-    
-    W_{i}&=\left(1/ d_{i}\right)/\sum_{i=1}^{n}\left(1/ d_{i}\right) \\\\
-    
-    d_{i}&=1+\sqrt{\left|x_{i}-x_{0}\right|^{2}}/(w/ 2)
-    
-    \end{align*}
-    $$
+`R-BERT`模型在SemEval-2010 Task 8数据集上的对比实验如下：
 
-    > 这里的对于邻近相似像元的加权平均系数$W_{i}$参考了STARFM的系数$W_{ijk}$；
-    >
-    > <span class="s-color-primary">**\[假设]**</span>: 地物边界在$t_1$到$t_2$间稳定，$t_1$时刻的光谱相似性可代表$t_2$时刻的空间结构。
+
+
+| **Method**      | **F1** | **Author & Year**        |
+| --------------- | ------ | ------------------------ |
+| SVM             | 82.2   | Rink and Harabagiu, 2010 |
+| RNN             | 77.6   | Socher et al., 2012      |
+| MVRNN           | 82.4   | Socher et al., 2012      |
+| CNN+Softmax     | 82.7   | Zeng et al., 2014        |
+| FCM             | 83.0   | Yu et al., 2014          |
+| CR-CNN          | 84.1   | Santos et al., 2015      |
+| Attention CNN   | 85.9   | Shen and Huang, 2016     |
+| Att-Pooling-CNN | 88.0   | Wang et al., 2016        |
 
 
 
 ::col_2::
 
-3. 残差补偿(RC)：
 
-    补偿RM模型的残差，确保最终预测与Sentinel-3影像的光谱一致性。
-    $$
-    \begin{align*}
-    
-    \widehat{F}_{RC}\left(x_{0}, l_{b}\right)&=\sum_{i=1}^{n} W_{i} r\left(x_{i}, l_{b}\right) \\\\
-    
-    \widehat{F}_{2}\left(x_{0}, l_{b}\right)&=\widehat{F}_{SF}\left(x_{0}, l_{b}\right)+\widehat{F}_{RC}\left(x_{0}, l_{b}\right)
-    
-    \end{align*}
-    $$
+| **Method**               | **F1**    | **Author & Year**    |
+| ------------------------ | --------- | -------------------- |
+| Entity Attention Bi-LSTM | 85.2      | Lee et al., 2019     |
+| **R-BERT**               | **89.25** | Paper Implementation |
 
-    > 这里的$r\left(x_{i}, l_{b}\right)$是对RM步的coarse残差$R\left(X, l_{b}\right)$重采样到fine分辨率；
-    >
-    > RC的$W_i$继续沿用SF；
 
-    
+## **3.2. 消融实验**
 
----
+本文设计了三个消融实验，分别是仅使用 `[CLS]` 而不使用实体的词向量（`BERT-NO-ENT`）、不加上特殊标记 `$` 和 `#` （`BERT-NO-SEP`）以及既不加特殊标记也不使用 `[CLS]`（`BERT-NO-SEP-NO-ENT`），消融实验结果如下：
 
 
 
-<s-image src="./fusion/fit-fc_steps.png" intro="（a）RM。（b）SF。（c）Fit-FC。（d）t2参考。" align="center"/>
+| **Method**           | **F1**    |
+| -------------------- | --------- |
+| R-BERT-NO-SEP-NO-ENT | 81.09     |
+| R-BERT-NO-SEP        | 87.98     |
+| R-BERT-NO-ENT        | 87.99     |
+| **R-BERT**           | **89.25** |
 
 
 
@@ -469,6 +292,6 @@ layout: s-cols
 layout: s-end
 ---
 
-# 汇报完毕
+# **汇报完毕**
 
-谢谢大家！
+**谢谢大家！**
