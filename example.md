@@ -13,8 +13,8 @@ defaults:
     logo: school_logo.svg
 ---
 
-# 自然语言处理课程汇报
-Natural Language Processing Course Debriefing
+# 不确定性人工智能课程汇报
+Uncertainty Artificial Intelligence Course Debriefing
 
 ---
 layout: s-toc
@@ -25,42 +25,77 @@ layout: s-toc
 $\text{CONTENT}$
 
 ---
-section: 论文介绍
+section: 材料与方法
 layout: s-sub-cover
 ---
 
-# 一、论文介绍
+# 一、材料与方法
 
-1st. Paper Introduction
+1st. Material and Methods
 
 ---
 layout: s-cols
 ---
 
-## **1.1. 论文简介**
+## **1.1. 实验区域**
+
+鄱阳湖（28°24′~29°46′N，115°49′~116°46′E）作为中国第一大淡水湖泊，其水文过程呈现典型的季节性波动特征。
+
+
 
 ::col_1::
 
-* **标题**：Pre-trained Language Model with Entity Information for Relation Classification
-* **翻译**：用实体信息丰富预训练语言模型以进行关系分类
-* **作者**：Shanchan Wu
-* **日期**：2019
 
-<s-card type="theme" header="论文来源">
 
-* **Conference**：CIKM
-* **CCF**：B
-* **Arxiv**：[[1905.08284\] Enriching Pre-trained Language Model with Entity Information for Relation Classification](https://arxiv.org/abs/1905.08284)（2018）
+<s-align align="start" direction="vertical">
 
-</s-card>
+<s-card type="theme" header="研究背景">
 
-> 这篇论文提出了一种通过将目标实体信息融入预训练BERT模型的方法，即 `R-BERT` ，显著提升了关系分类任务的性能，并在SemEval-2010任务8数据集上取得了当时的最好结果。
+* 湿地是生态系统的重要组成部分，在水文调节、生物多样性保护和碳汇功能方面发挥着至关重要的作用。
+
+* 湿地是开放复杂的生态综合体，其土地覆盖类型对生态平衡和功能具有重要影响。
+* 湿地植被分类是湿地生态系统研究、监测和管理的基础工作，直接影响湿地生态系统的保护和恢复。
+
+</s-card >
+
+该湖通过吸纳赣江、饶河、抚河、信江、修水等五河来水，形成独特的"高水成湖、低水似河"地貌景观，年内水位变幅可达9-15米，直接导致水域面积从丰水期＞3000 km²骤减至枯水期146 km²。
+
+流域内建立的鄱阳湖国家级自然保护区及南矶山湿地国家级自然保护区，保存有完整的洲滩生态系统，其中湿地植被以芦苇（Phragmites australis）、菰（Zizania latifolia）和苔草（Carex spp.）为优势种，通过水质净化、生物栖息地维持及碳汇功能维系区域生态安全。
+
+</s-align>
 
 
 
 ::col_2::
 
-<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/image-20250411142923957-1744352964052.png" intro="figure 1. 论文简介"/>
+<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/poyang-1745456093724.png" intro="figure 1. 研究区域"/>
+
+---
+layout: s-cols
+---
+
+## **1.2. 实验数据：**
+
+
+
+::col_1::
+
+
+
+本研究分别于2024年4月和12月对鄱阳湖典型湿地生态系统开展了两期实地调查采样工作。基于现场观测与目视解译相结合的方法，系统采集了水体、泥潭、沙地等无机质基质样本，以及蓼子草、苔草、芦苇、南荻、虉草等优势植被类型的生物样本。这种多层次、多时相的样本采集体系，为后续湿地生态系统遥感解译与景观动态分析奠定了可靠的数据基础。
+
+| **类别**     | 水体 | 泥潭 | 蓼子草 | 苔草 | 芦苇 | 南荻 | 沙地 | 虉草 |
+| ------------ | ---- | ---- | ------ | ---- | ---- | ---- | ---- | ---- |
+| **样本数量** | 1048 | 1098 | 454    | 4370 | 2308 | 834  | 556  | 256  |
+| **参考点**   | 3    | 3    | 3      | 3    | 3    | 3    | 3    | 3    |
+
+本研究以Sentinel-2多光谱成像仪（MSI）Level-2A级地表反射率产品为主要数据源，选取2024年1-12月覆盖鄱阳湖全域的卫星影像，通过欧空局Copernicus数据平台获取原始数据。在数据预处理阶段，采用云掩膜技术筛选云量低于30\%的合格影像，有效剔除大气透射异常及云层遮蔽的干扰。
+
+::col_2::
+
+
+
+<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/%E5%9B%BE%E7%89%871-1745456870094.png" intro="figure 2. 实地采集样本"/>
 
 ---
 layout: s-vertical
@@ -68,9 +103,9 @@ layout: s-vertical
 
 ::side::
 
-## **1.2. 相关概念**
+## **1.3. 变精度粗糙集**
 
-Related concepts
+Variable Precision Rough Set
 
 
 
@@ -82,26 +117,19 @@ Related concepts
 
 
 
-### **1.2.1. 关系分类** | `Relation classification`：
+### **1.3.1. 经典粗糙集理论**：
 
-关系分类是提取实体之间语义关系的重要NLP任务。
+Pawlak于1982年首次提出了粗糙集理论(Rough Set Theory, RST)。该理论是集合论的扩展，主要用于研究那些以不准确、不确定或模糊信息为特征的智能系统。通过利用RST中的下近似和上近似概念，可以揭示系统中隐藏的知识，并将其以决策规则的形式呈现出来。
 
-> 给定一个文本序列（通常是一个句子）`s` 和一对名词 `e` 和 `e`，关系分类目标是识别 `e` 和 `e` 之间的关系；
->
-> 例如：“The [kitchen]<sub>e1</sub> is the last renovated part of the [house]<sub>e1</sub>.”，这展示了名词 “kitchen” 和 “house” 之间的 “component-whole” 关系；
+粗糙集的知识表示可以通过一个四元组信息系统S来定义：
 
-先前的关系分类最优模型通常是基于 `CNN` 或 `RNN` 。最近，预训练BERT模型在自然语言处理的分类或序列标注的任务上获得最好效果。
+$$
+S=\left\langle U,R,V,f \right\rangle,\quad R=C\cup D
+$$
 
+### **1.3.2. 变精度粗糙集**：
 
-
-<br/>
-
-### **1.2.2. 预训练BERT**：
-
-预训练BERT是Devlin等基于 `Transformer` 提出的双向编码器，BERT预训练算法有：
-
-* <span class="s-color-primary">**Masked Language Model**</span>
-* <span class="s-color-primary">**Next Sentence Prediction**</span>；
+粗糙集理论常用于数据分类，但传统模型对噪声数据较为敏感。为了更好地处理噪声数据和不确定信息，Ziarko在1993年提出了可变精度粗糙集模型(Variable Precision Rough Sets, VPRS)。VPRS是经典粗糙集理论的扩展，允许用户设定一个精度参数$\beta$，从而更灵活地调整近似集的精度。该模型在处理噪声数据和不完全数据时表现出色。
 
 </s-align>
 
@@ -113,178 +141,137 @@ Related concepts
 
 <s-align align="center" direction="vertical">
 
-### **1.2.3. 相关工作**：
-
-
-
-| 方法名称                 | 作者              | 年份  | 关键贡献/特点                                                |
-| ------------------------ | ----------------- | ----- | ------------------------------------------------------------ |
-| MVRNN                    | Socher et al.     | 2012  | 使用递归神经网络（RNN）和句法树结构自底向上构建句子表示      |
-| CNN+Softmax              | Zeng et al.       | 2014  | 结合词嵌入和位置特征，CNN输出与词汇特征结合进行预测          |
-| FCM                      | Yu et al.         | 2014  | 通过依赖树和命名实体构建句子和子结构嵌入                     |
-| CR-CNN                   | dos Santos et al. | 2015  | 基于卷积神经网络和成对排序损失函数进行关系分类               |
-| Attention CNN            | Shen and Huang    | 2016  | CNN编码器结合目标实体的注意力机制                            |
-| Att-Pooling-CNN          | Wang et al.       | 2016  | 两级注意力机制捕捉异构上下文中的模式                         |
-| Entity Attention Bi-LSTM | Lee et al.        | 2019  | 端到端RNN模型，结合实体感知注意力和潜在实体类型              |
-| 远程监督方法             | Mintz et al., 等  | 2009+ | 处理远程监督数据中的噪声标签（如Hoffmann、Lin、Ji等的研究），但本文专注于无噪声的常规关系分类 |
-
-
-
-</s-align>
-
-
-
----
-section: 模型介绍
-layout: s-sub-cover
----
-
-# 二、模型介绍
-
-2nd. Model Introduction
-
----
-layout: s-cols
----
-
-
-## **2.1. 数据处理**
-
-本文使用了BERR句首的特殊符号 `[CLS]` ，`[CLS]` 经过BERT处理后的词向量常被用于文本分类等下游任务。此外，在每个实体的两侧，本文也相应的插入特殊符号，第一个实体两侧的特殊符号是 `$` ，第二个实体两侧是 `#` 。文本处理完毕后的效果如下：
-
-> * “The [kitchen]<sub>e1</sub> is the last renovated part of the [house]<sub>e1</sub>.”
-> * [CLS] The \$ kitchen \$ is the last renovated part of the # house # .
-
-
-
-::col_1::
-
-<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/image-20250411154334696-1744357414804.png" intro="figure 2. 模型结构"/>
-
-
-
----
-layout: s-cols
----
-
-## **2.2. 模型介绍**
-
-模型由三个主要部分组成，一部分是BERT模型，用于提取文本的向量表示；模型的第二部分对从BERT获得的词向量进行处理；模型第三部分将第二部分处理结果拼接然后继续进行处理；
-
-::col_1::
-
-
-
-### **2.2.1. 全连接层：**
-
-模型的第二部分对从BERT获得的词向量进行处理。对于实体向量，由于<span class="s-color-primary">**实体可能包含不止一个词**</span>，所以本文将实体包含的词向量进行加和平均来得到实体的向量表示。公式如下：
-
-> 以模型图为例，`Entity 1`在未处理文本中的表示是 `Ti～Tj` ，经BERT后的词向量为 `Hi～Hj` ，将其<span class="s-color-primary">**加和平均**</span>后，再过一个 `dropout`（公式中没有标注，但在源码中使用），一个 `tanh` 激活以及一个全连接层得到实体表示
-
+在可变精度粗糙集中，信息系统仍然定义为四元组$S=\left\langle U,R,V,f \right\rangle,\quad R=C\cup D$。在此模型中，根据数据噪声的程度，定义了$\beta$的概率阈值。而这个概率阈值的取值范围是区间$[0,0.5)$。可变精度粗糙集的$\beta$-正域、$\beta$-负域与$\beta$-边界域定义如下：
 $$
 \begin{align*}
-H_{1}' &= W_{1} \left[ \tanh\left( \frac{1}{j - i + 1} \sum_{t=i}^{j} H_{t} \right) \right] + b_{1} \\
-H_{2}' &= W_{2} \left[ \tanh\left( \frac{1}{m - k + 1} \sum_{t=k}^{m} H_{t} \right) \right] + b_{2}
+  &POS_{\beta}(X) = \{ x\in U \mid \text{Pr}(X\mid [x]) \geq 1 - \beta \}\\
+  &BND_{\beta}(X) = \{ x\in U \mid \text{Pr}(X\mid [x]) \leq \beta \}\\
+  &\begin{aligned}
+    NEG_{\beta}(X) = \{ &x\in U \mid \\
+    &\beta \leq  \text{Pr}(X\mid [x])\leq 1 - \beta \}
+  \end{aligned}
 \end{align*}
 $$
 
 
-::col_2::
+等价类$[x]$与目标集合$X$之间的相关程度定义如下：
 
 
-
-<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/image-20250411160309506-1744358589577.png" intro="figure 3. BERT词向量处理"/>
-
-
-
----
-layout: s-cols
----
-
-::col_2::
+$$
+\begin{equation*}
+  K_{\beta}\left(\left[x\right], X\right) = \cfrac{\left|POS_{\beta}(X) \cup NEG_{\beta}(X)\right|}{\left|U\right|}
+\end{equation*}
+$$
 
 
-
-<s-align align="center" direction="vertical">
-
-对于模型的句首的特殊标记 `[CLS]` ，模型也经过类似的处理，得到了 `[CLS]` 最终的向量表示：
-
-$$ H_{0}' = W_{0} \left( \tanh(H_{0}) \right) + b_{0} $$
-
-需要注意的是论文中将这上述三个全连接层进行了<span class="s-color-danger">**参数共享**</span>，即：$W_0 = W_1 = W_2$，$b_0 = b_1 = b_2$；
-
-### **2.2.2. 分类：**
-
-模型的第三部分将第二部分获得三个向量 $(H_{0}', H_{1}', H_{2}')$ 进行拼接并送入全连接层中，最后通过softmax进行分类。
+$K_{\beta}\left(\left[x\right], X\right)$表示论域$U$上样本粗略或明确地分为$\beta$-正域和$\beta$-负域的比例。
 
 
 
 </s-align>
 
 
+---
+layout: s-cols
+---
+
+## **1.4. DTW：**
 
 ::col_1::
 
+动态时间规整（Dynamic Time Warping, DTW）是一种用于对齐时间序列的非线性相似性度量方法，尤其适用于处理因季节波动或观测间隔差异导致的序列局部形变问题。设两个时间序列 $X = (x_1, x_2, ..., x_m)$ 与 $Y = (y_1, y_2, ..., y_n)$，DTW通过构建累积距离矩阵$D(i,j)$寻找最优规整路径$\phi = \{\phi_k = (i_k, j_k)\}$，其目标是最小化路径上的总累积距离：
 
+$$
+D(i,j) = d(x_i, y_j) + \min \begin{cases}
+D(i-1,j) \\
+D(i,j-1) \\
+D(i-1,j-1)
+\end{cases}
+$$
+> 其中$d(x_i, y_j) = |x_i - y_j|$为局部距离函数，路径需满足边界性、单调性与连续性约束。
 
-<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/image-20250411161833534-1744359513605.png" intro="figure 4. 全连接+softmax分类"/>
+::col_2::
 
-
----
-section: 实验介绍
-layout: s-sub-cover
----
-
-# 三、实验介绍
-
-2nd. Experiment Introduction
-
+<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/v2-8dc69701d5fe04ed81a470635c219509_r-1745457795431.png" intro="figure 3. DTW算法实例"/>
 
 ---
 layout: s-cols
 ---
 
+## **1.5. 实验设计：**
+
+
+
+本研究的特征提取方法融合了多时相物候特征与多光谱特征，构建了面向湿地植被分类的多维度特征集。首先对2024年全年的Sentinel-2 NDVI时间序列进行数据重构：通过三次样条插值填补因云污染导致的时序空缺，再采用Savitzky-Golay(SG)滤波消除随机噪声。本研究通过融合多光谱特征与物候特征实现高精度地物分类。特征提取板块包含以下两个组成部分：
+
 ::col_1::
-## **3.1. 对比实验**
 
-`R-BERT`模型在SemEval-2010 Task 8数据集上的对比实验如下：
+### **1.5.1. 光谱特征提取：**
 
-
-
-| **Method**      | **F1** | **Author & Year**        |
-| --------------- | ------ | ------------------------ |
-| SVM             | 82.2   | Rink and Harabagiu, 2010 |
-| RNN             | 77.6   | Socher et al., 2012      |
-| MVRNN           | 82.4   | Socher et al., 2012      |
-| CNN+Softmax     | 82.7   | Zeng et al., 2014        |
-| FCM             | 83.0   | Yu et al., 2014          |
-| CR-CNN          | 84.1   | Santos et al., 2015      |
-| Attention CNN   | 85.9   | Shen and Huang, 2016     |
-| Att-Pooling-CNN | 88.0   | Wang et al., 2016        |
+采用11月份Sentinel-2卫星的13个多光谱波段数据（490-2190nm）构建光谱特征空间，该时段数据可有效反映研究区植被成熟期的稳定光谱特性。
 
 
+
+### **1.5.2. 物候特征提取：**
+
+基于全年NDVI时间序列构建动态物候特征。首先对原始NDVI影像进行时序重构：
+
+
+
+1. **缺失值插值**：对云污染导致的缺失数据，采用线性插值法进行修复：
+    $$
+    \begin{equation*}
+    
+    \hat{y}(t) = y(t_{\text{prev}}) + \frac{y(t_{\text{next}}) - y(t_{\text{prev}})}{t_{\text{next}} - t_{\text{prev}}}(t - t_{\text{prev}})
+    
+    \end{equation*}
+    $$
+    
 
 ::col_2::
 
 
-| **Method**               | **F1**    | **Author & Year**    |
-| ------------------------ | --------- | -------------------- |
-| Entity Attention Bi-LSTM | 85.2      | Lee et al., 2019     |
-| **R-BERT**               | **89.25** | Paper Implementation |
+
+2. **时序平滑**：采用Savitzky-Golay滤波器进行噪声抑制，通过局部二次多项式拟合实现保形平滑：
+    $$
+    \begin{equation*}
+    
+    y_{sg}(t) = \sum_{i=-k}^{k} a_i y(t+i)
+    
+    \end{equation*}
+    $$
+    
+
+为表征典型地物物候差异，针对8种目标类别分别建立参考模式，
+
+1）每类人工选取3个具有物候典型性的样本点（如作物关键生长期）；2）计算样本点NDVI序列的欧氏距离质心，生成参考物候模式；3）通过动态时间规整算法计算待分类像元NDVI序列$X = \{x_1,...,x_T\}$与各参考模式的时序匹配距离；4）取规整路径的累积距离$D_{T,T}$作为物候差异度量，最终生成8维物候特征向量。
 
 
-## **3.2. 消融实验**
 
-本文设计了三个消融实验，分别是仅使用 `[CLS]` 而不使用实体的词向量（`BERT-NO-ENT`）、不加上特殊标记 `$` 和 `#` （`BERT-NO-SEP`）以及既不加特殊标记也不使用 `[CLS]`（`BERT-NO-SEP-NO-ENT`），消融实验结果如下：
+---
+section: 结果与讨论
+layout: s-sub-cover
+---
 
+# 二、结果与讨论
 
+2nd. Result and Discuss
 
-| **Method**           | **F1**    |
-| -------------------- | --------- |
-| R-BERT-NO-SEP-NO-ENT | 81.09     |
-| R-BERT-NO-SEP        | 87.98     |
-| R-BERT-NO-ENT        | 87.99     |
-| **R-BERT**           | **89.25** |
+---
+layout: s-cols
+---
+
+## **2.1. 实验结果**
+
+基于变精度粗糙集特征约简与多特征融合策略的湿地植被分类模型在测试集上展现出显著性能优势。整体分类精度（Overall accuracy, OA）达到84.4%，Kappa系数为0.882。分类结果混淆矩阵详见图4。本研究使用变精度粗糙集对提取出来的特征一共得出了267条规则，前三十条支持度最高的规则如图5所示。
+
+::col_1::
+
+<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/image-20250424093918776-1745458758900.png" intro="figure 4. 分类混淆矩阵"/>
+
+::col_2::
+
+<s-image src="https://soppy-ie-1351762962.cos.ap-chongqing.myqcloud.com/slidev-cqupt/image-20250424094027484-1745458827612.png" intro="figure 5. 模型结构"/>
 
 
 
